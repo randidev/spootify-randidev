@@ -1,38 +1,50 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Spootify Coding Challenge 🎧 &nbsp; ![hard](https://img.shields.io/badge/-Hard-red) ![time](https://img.shields.io/badge/%E2%8F%B0-60m-blue)
 
-## Getting Started
+&nbsp;
 
-First, run the development server:
+# Goals/Outcomes ✨
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+- To test knowledge of consuming APIs and handling responses
+- Loading state and knowing where and how to make multiple API calls efficiently
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+&nbsp;
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+# Pre-requisites ✅
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+- Add your Spotify client ID & secret to a `.env` file in root using the environment variables `REACT_APP_SPOTIFY_CLIENT_ID` and `REACT_APP_SPOTIFY_CLIENT_SECRET`
+  - Note. **Never add this type of config to version control. This would usually come from your build server.**
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+&nbsp;
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+# Requirements 📖
 
-## Learn More
+- Fetch and display _Released This Week_ songs
+  - Use the API path `new-releases`
+- Fetch and display _Featured Playlists_
+  - Use the API path `featured-playlists`
+- Fetch and display _Browse_ genres
+  - Use the API path `categories`
+- Loading state/UI _(optional, current UX is already clean)_
 
-To learn more about Next.js, take a look at the following resources:
+&nbsp;
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+# Think about 💡
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- Taking a look at the Spotify API documentation
+- Do you resolve each API request one after the other or in parallel?
+- Where do you make the API requests?
+- How much logic do you offload out of the UI components?
 
-## Deploy on Vercel
+&nbsp;
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+# What's Already Been Done 🏁
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- UI/UX for all elements, including previews (mobile responsive)
+
+&nbsp;
+
+# Screenshots 🌄
+
+&nbsp;
+![screenshot-desktop](https://puu.sh/GwPLE/3be580156a.png)
+<img alt="screenshot-mobile" width=400 src="https://puu.sh/GwPLS/0bcb566d23.png" />
