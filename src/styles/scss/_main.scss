@@ -5,6 +5,10 @@
 @import "./components/sidebar";
 @import "./components/player";
 
+@import "./pages/discover/discover-block";
+@import "./pages/discover/discover-item";
+@import "./pages/discover/discover";
+
 * {
   box-sizing: border-box;
 }
@@ -74,5 +78,63 @@ body,
         padding: 20px;
       }
     }
+  }
+
+  &__loading {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: none;
+
+    &--show {
+      display: block;
+    }
+
+    &__body {
+      position: relative;
+      height: 100%;
+      &__backdrop {
+        position: absolute;
+        content: "";
+        background-color: $primary-grey;
+        width: 100%;
+        height: 100%;
+        opacity: 0.5;
+      }
+
+      &__text {
+        position: relative;
+        height: 100%;
+        p {
+          z-index: 50;
+          font-family: "Rubik", sans-serif;
+          text-align: center;
+          color: #39383d;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          &::after {
+            content: " ...";
+            animation: loadingIndicator 1s infinite;
+          }
+        }
+      }
+    }
+  }
+}
+
+@keyframes loadingIndicator {
+  0% {
+    content: " .";
+  }
+  50% {
+    content: " ..";
+  }
+  80% {
+    content: " ...";
+  }
+  100% {
+    content: " .";
   }
 }

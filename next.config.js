@@ -5,11 +5,16 @@ const nextConfig = {
   webpack(config) {
     config.module.rules.push({
       test: /\.svg$/i,
-      issuer: /\.[jt]sx?$/,
       use: ["@svgr/webpack"],
     });
 
     return config;
+  },
+  env: {
+    SPOTIFY_AUTH_URL: process.env.SPOTIFY_AUTH_URL,
+    SPOTIFY_BASE_URL: process.env.SPOTIFY_BASE_URL,
+    SPOTIFY_CLIENT_ID: process.env.SPOTIFY_CLIENT_ID,
+    SPOTIFY_CLIENT_SECRET: process.env.SPOTIFY_CLIENT_SECRET,
   },
 };
 
