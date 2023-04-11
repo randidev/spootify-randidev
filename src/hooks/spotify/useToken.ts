@@ -1,7 +1,7 @@
 import { useAppSelector, useAppDispatch } from "@/redux/hooks";
 import { actions, selectors } from "@/redux/spotify";
 import { getToken } from "@/services/spotify";
-import { useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef } from "react";
 import moment from "moment";
 import useLoading from "../useLoading";
 
@@ -11,7 +11,7 @@ const useToken = () => {
   const { setLoading } = useLoading();
   const alreadyFetching = useRef(false);
 
-  const getSpotifyToken = async () => {
+  const getSpotifyToken = useCallback(async () => {
     setLoading(true);
     const res = await getToken();
 
@@ -23,7 +23,7 @@ const useToken = () => {
       );
 
     setLoading(false);
-  };
+  }, [dispatch, setLoading]);
 
   useEffect(() => {
     if (alreadyFetching.current) return;
@@ -37,7 +37,7 @@ const useToken = () => {
     const isTokenEmpty = token.access_token === "";
 
     if (isTokenEmpty || isTokenExpired) getSpotifyToken();
-  }, [token]);
+  }, [token, getSpotifyToken]);
 
   return { token, getSpotifyToken };
 };

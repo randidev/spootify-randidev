@@ -1,7 +1,7 @@
 import { useAppSelector } from "@/redux/hooks";
 import { selectors } from "@/redux/spotify";
 import { getFeaturedPlaylists } from "@/services/spotify";
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { IFeaturedPlaylists } from "./type";
 
 const useFeaturedPlaylists = () => {
@@ -12,13 +12,13 @@ const useFeaturedPlaylists = () => {
   const alreadyFetching = useRef(false);
   const prevToken = useRef("");
 
-  const fetchFeaturedPlaylists = async () => {
+  const fetchFeaturedPlaylists = useCallback(async () => {
     setLoading(true);
     const res = await getFeaturedPlaylists(token);
 
     if (res.status === 200) setFeaturedPlaylists(res.data);
     setLoading(false);
-  };
+  }, [token]);
 
   useEffect(() => {
     if (alreadyFetching.current && prevToken.current === token.access_token)
@@ -28,7 +28,7 @@ const useFeaturedPlaylists = () => {
     prevToken.current = token.access_token;
 
     if (token.access_token !== "") fetchFeaturedPlaylists();
-  }, [token]);
+  }, [token, fetchFeaturedPlaylists]);
 
   return { featuredPlaylists, fetchFeaturedPlaylists, loading };
 };

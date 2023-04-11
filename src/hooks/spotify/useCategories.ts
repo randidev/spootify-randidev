@@ -1,7 +1,7 @@
 import { useAppSelector } from "@/redux/hooks";
 import { selectors } from "@/redux/spotify";
 import { getCategories } from "@/services/spotify";
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { ICategories } from "./type";
 
 const useCategories = () => {
@@ -11,13 +11,13 @@ const useCategories = () => {
   const alreadyFetching = useRef(false);
   const prevToken = useRef("");
 
-  const fetchCategories = async () => {
+  const fetchCategories = useCallback(async () => {
     setLoading(true);
     const res = await getCategories(token);
 
     if (res.status === 200) setCategories(res.data);
     setLoading(false);
-  };
+  }, [token]);
 
   useEffect(() => {
     if (alreadyFetching.current && prevToken.current === token.access_token)
@@ -27,7 +27,7 @@ const useCategories = () => {
     prevToken.current = token.access_token;
 
     if (token.access_token !== "") fetchCategories();
-  }, [token]);
+  }, [token, fetchCategories]);
 
   return { categories, fetchCategories, loading };
 };

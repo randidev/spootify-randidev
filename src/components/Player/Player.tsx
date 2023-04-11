@@ -16,7 +16,7 @@ export default function Player() {
     <div className="player">
       <div className="player__album">
         <span />
-        <p>Nothing's playing</p>
+        <p>Nothing&apos;s playing</p>
       </div>
       <div className="player__controls">
         <FontAwesomeIcon icon={faStepBackward} />
