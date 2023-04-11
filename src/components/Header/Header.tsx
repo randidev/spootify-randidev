@@ -1,14 +1,20 @@
 import React, { FC } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMoon, faSun } from "@fortawesome/free-solid-svg-icons";
-import Hero from "^/public/assets/images/hero.svg";
 import { THeader } from "./type";
 import Image from "next/image";
 
 const Header: FC<THeader> = ({ history }) => {
   return (
     <div className="header">
-      <Hero />
+      <div className="header__logo__cover">
+        <Image
+          src={"/assets/images/hero.svg"}
+          alt="header-logo"
+          className="header__logo"
+          fill
+        />
+      </div>
       <div>
         <h1>Your favourite tunes</h1>
         <h2>

@@ -95,8 +95,7 @@
         font-size: 20px;
       }
 
-      > svg,
-      .header__logo {
+      > svg {
         margin-left: 10px;
         margin-right: 10px;
 
@@ -108,6 +107,16 @@
       > svg:last-of-type {
         color: $deep-grey;
       }
+    }
+  }
+
+  .header__logo__cover {
+    position: relative;
+    width: 80%;
+    height: 450px;
+
+    @media only screen and (max-width: 1300px) {
+      display: none;
     }
   }
 

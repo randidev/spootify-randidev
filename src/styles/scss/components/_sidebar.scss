@@ -80,9 +80,18 @@
     margin-bottom: 50px;
     margin-top: 20px;
 
+    &__avatar {
+      position: relative;
+      width: 30%;
+      height: 67px;
+    }
+
     @media only screen and (max-width: 650px) {
       > p {
         display: none;
+      }
+      &__avatar {
+        height: 23px;
       }
     }
 
